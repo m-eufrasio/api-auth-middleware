@@ -39,8 +39,9 @@ class LoginRequest extends FormRequest
      */
     public function authenticate(): void
     {
-        $this->ensureIsNotRateLimited();
+        $this->ensureIsNotRateLimited(); // Verifica se o usuário não ultrapassou a tentativa de limites de login
 
+        // Attempt verifica quantas tentativas de validações foram feitas, se falhar ele adiciona no contador
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
@@ -49,7 +50,7 @@ class LoginRequest extends FormRequest
             ]);
         }
 
-        RateLimiter::clear($this->throttleKey());
+        RateLimiter::clear($this->throttleKey()); // Limpa o contador de limite de taxa se a autenticação for bem-sucedida
     }
 
     /**
