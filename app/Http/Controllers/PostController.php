@@ -3,32 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
-use App\Models\Post;
-use App\Models\User;
+use Illuminate\Http\Response;
+use App\Interfaces\PostRepositoryInterface;
 
 class PostController extends Controller
 {
+    protected $repository;
+
+    public function __construct(PostRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index()
     {
-        $ob = new Post;
-
-        Gate::define('index-post', function (User $user, Post $post) use ($id) {
-            if ((int) $id === $post->select('user_id')->first()->user_id) {
-                return true;
-            }
-
-            return false;
-        });
-
-        if (Gate::allows('index-post', $ob)) {
-            dd('é true');
-        } else {
-            dd('é false');
-        }
+        return response()->json([
+            'data' => $this->repository->all(),
+            'message' => 'successfully',
+        ], Response::HTTP_OK);
     }
 
     /**
@@ -36,7 +31,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $this->repository->create([
+            "name" => $request->name,
+            "body" => $request->body,
+            "user_name" => $request->user_name,
+            "user_id" => $request->user_id,
+        ]);
+
+        return response()->json([
+            'message' => 'successfully',
+            'data' => $data,
+        ], Response::HTTP_CREATED);
     }
 
     /**
@@ -44,22 +49,41 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = $this->repository->findBy((int) $id);
+        
+        return response()->json([
+            'message' => 'successfully',
+            'data' => $data,
+        ], Response::HTTP_OK);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
-        //
+        $this->repository->update([
+            "name" => $request->name,
+            "body" => $request->body,
+            "user_name" => $request->user_name,
+            "updated_at" => $request->user_name,
+            "user_id" => $request->user_id,
+        ], $id);
+
+        return response()->json([
+            'message' => 'update successfully',
+        ], Response::HTTP_OK);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $userId, string $postId)
     {
-        //
+        $this->repository->delete((int) $postId);
+
+        return response()->json([
+            'message' => 'delete successfully',
+        ], Response::HTTP_NO_CONTENT);
     }
 }
