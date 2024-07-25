@@ -29,7 +29,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
     //     Route::get('/index', 'index');
     // });
 
-    Route::prefix('post')->group(function () {
-        Route::get('/index/{id}', [PostController::class, 'index']);
+    Route::middleware('gate')->prefix('post')->group(function () {
+        Route::get('/index', [PostController::class, 'index'])->name('post.index');
+        Route::get('/show/{id}', [PostController::class, 'show'])->name('post.show');
+        Route::post('/store', [PostController::class, 'store'])->name('post.store');
+        Route::put('/update/{id}', [PostController::class, 'update'])->name('post.update');
+        Route::delete('/delete/{userId}/{postId}', [PostController::class, 'destroy'])->name('post.delete');
     });
 });
