@@ -5,7 +5,8 @@ namespace App\Providers;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
-use App\Models\User;
+use App\Models\Post;
+use App\Policies\PostPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -15,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Post::class => PostPolicy::class,
     ];
 
     /**
@@ -29,8 +30,10 @@ class AuthServiceProvider extends ServiceProvider
             return config('app.frontend_url')."/password-reset/$token?email={$notifiable->getEmailForPasswordReset()}";
         });
 
-        Gate::define('index-post', function (User $user) {
-            return $user->hasPermission('index-post');
-        });
+        Gate::define('index-post', [PostPolicy::class, 'viewAny']);
+        Gate::define('show-post', [PostPolicy::class, 'view']);
+        Gate::define('store-post', [PostPolicy::class, 'create']);
+        Gate::define('update-post', [PostPolicy::class, 'update']);
+        Gate::define('delete-post', [PostPolicy::class, 'forceDelete']);
     }
 }
