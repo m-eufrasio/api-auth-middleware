@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('body');
             $table->string('user_name');
             $table->integer('user_id');
-            $table->string('updated_by');
             $table->timestamps();
         });
     }
