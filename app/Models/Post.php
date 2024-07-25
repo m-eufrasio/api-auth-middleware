@@ -14,8 +14,6 @@ class Post extends Model
         'body',
         'user_name',
         'user_id',
-        'updated_by',
-
     ];
 
     protected $dates = [
