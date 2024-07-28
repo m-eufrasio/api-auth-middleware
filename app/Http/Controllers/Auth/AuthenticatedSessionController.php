@@ -20,6 +20,7 @@ class AuthenticatedSessionController extends Controller
         // $request->session()->regenerate(); // Regenera a sessão para evitar ataques de fixação de sessão
 
         $user = Auth::user();
+
         $token = $user->createToken('API token')->plainTextToken;
 
         return response()->json([
