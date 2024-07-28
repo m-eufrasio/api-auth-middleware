@@ -8,8 +8,6 @@ use Illuminate\Auth\Access\Response;
 
 class PostPolicy
 {
-    const SABRINA_ID = 3;
-
     /**
      * Determine whether the user can view any models.
      */
@@ -23,11 +21,9 @@ class PostPolicy
      */
     public function view(User $user, Post $post): Response
     {
-        $request = request();
-
-        return (int) $request->route('id') === $post->select('user_id')->first()->user_id
-                                        ? Response::allow()
-                                        : Response::denyWithStatus(403, 'You do not own this post.');
+        return $user->id === $post->select('user_id')->first()->user_id
+            ? Response::allow()
+            : Response::denyWithStatus(403, 'You do not own this post.');
     }
 
     /**
@@ -35,13 +31,11 @@ class PostPolicy
      */
     public function create(User $user, Post $post): Response
     {
-        $request = request();
-
         $userId = $post->select('user_id')
-            ->where('user_id', self::SABRINA_ID)
+            ->where('user_id', $user->id)
             ->first()->user_id;
 
-        return $request->user_id === $userId
+        return $user->id === $userId
             ? Response::allow()
             : Response::denyWithStatus(403, 'You do not own this post.');
     }
@@ -51,13 +45,11 @@ class PostPolicy
      */
     public function update(User $user, Post $post): Response
     {
-        $request = request();
-
         $userId = $post->select('user_id')
-            ->where('user_id', self::SABRINA_ID)
+            ->where('user_id', $user->id)
             ->first()->user_id;
-        
-        return $request->user_id === $userId
+
+        return $user->id === $userId
             ? Response::allow()
             : Response::denyWithStatus(403, 'You do not own this post.');
     }
@@ -83,14 +75,11 @@ class PostPolicy
      */
     public function forceDelete(User $user, Post $post): Response
     {
-        
-        $request = request();
-
         $userId = $post->select('user_id')
-            ->where('user_id', self::SABRINA_ID)
+            ->where('user_id', $user->id)
             ->first()->user_id;
-        
-        return (int) $request->route('userId') === $userId
+
+        return $user->id === $userId
             ? Response::allow()
             : Response::denyWithStatus(403, 'You do not own this post.');
     }
