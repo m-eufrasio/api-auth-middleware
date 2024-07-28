@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Interfaces\PostRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -47,9 +48,10 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        $data = $this->repository->findBy((int) $id);
+        $user = Auth::user();
+        $data = $this->repository->findBy($user->id);
         
         return response()->json([
             'message' => 'successfully',
