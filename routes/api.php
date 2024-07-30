@@ -18,6 +18,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/show', [PostController::class, 'show'])->name('post.show');
         Route::post('/store', [PostController::class, 'store'])->name('post.store');
         Route::put('/update/{id}', [PostController::class, 'update'])->name('post.update');
-        Route::delete('/delete/{userId}/{postId}', [PostController::class, 'destroy'])->name('post.delete');
+        Route::delete('/delete/{postId}', [PostController::class, 'destroy'])->name('post.delete');
     });
 });
