@@ -10,7 +10,9 @@
 </p>
 
 <p align="center">
-    <b>This API is designed to practice authentication and authorization using Laravel Sanctum. It also involved studying middlewares and creating one with a global Gate, accompanied by a Policy.</b>
+    <b>This API is designed to practice and demonstrate authentication and authorization using Laravel Sanctum. It includes comprehensive study and implementation of middlewares, with a focus on creating a global Gate and an associated Policy for access control.
+
+Additionally, the project incorporates seeders, migrations, and factories to facilitate testing and ensure robust development practices.</b>
 </p>
 
 <h2 id="tech">💻 Technologies</h2>
@@ -21,7 +23,7 @@
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
 ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
-OBS: The database used is PostgreSQL but feel free to uso anoher one.
+OBS: The database used is PostgreSQL but feel free to use another one.
 
 <h2 id="started">🚀 Getting started</h2>
 
@@ -29,83 +31,46 @@ OBS: The database used is PostgreSQL but feel free to uso anoher one.
 
 - [**PHP** version **8** or superior](https://www.php.net/);
 - [**Laravel 10** or superior](https://laravel.com/);
-- [**GIT 2** os superior](https://github.com);
-- [**Postman** version **11**](https://www.postman.com/);
-- Any database;
+- [**GIT 2** or superior](https://github.com);
+- [**Postman** version **11** or superior](https://www.postman.com/);
+- [Any database](https://www.postgresql.org);
 
 <h3>Cloning</h3>
 
-How to clone your project
+With the command below you will clone the project to your computer:
 
 ```bash
-git clone your-project-url-in-github
+git clone https://github.com/m-eufrasio/api-auth-middleware.git
 ```
 
 <h3>Config .env variables</h2>
 
-Use the `.env.example` as reference to create your configuration file `.env` with your AWS Credentials
-
-```bash
-...
-```
+Use the `.env.example` as reference to create your configuration file `.env`.
 
 <h3>Install Composer</h3>
 
-After clone de project you will need to install composer:
+After clone the project you will need to install composer:
 ```bash
 composer install
 ```
 
 <h3>Starting</h3>
 
-1° First you will run the project using this command
+1. Review the Documentation: Begin by reading the documentation to gain a better understanding of how each request operates. You can find the link to the documentation in the API Endpoints section.
+
+2. Run the Project: Execute the project using the following command:
 ```bash
 php artisan serve
 ```
 
-2° To send requests use the Postman that have a complete documentation abount this API and already have all requests but you need to make login to use the request's remaing because the login will generate the bearer token  to include in authorization header in Postman. The token expire in 1 hour so when this hapens you need to do login again to generate a new token.
-
-3° To continue using this API I realy recomend use the Postman documentation to read more about each request and how they work. In this link (link postman documentation) you will find especifications like JSONs examples.
-
+3. Sending Requests: Use Postman to send requests, which includes comprehensive documentation for the API and pre-configured requests. To access the remaining requests, you will need to log in to generate a Bearer token, which must be included in the Authorization header in Postman. Note that the token expires after 1 hour; you will need to log in again to obtain a new token once it expires.
+   
 <h2 id="routes">📍 API Endpoints</h2>
 
-(Building...)
-​
-| route               | description                                          
-|----------------------|-----------------------------------------------------
-| <kbd>GET /authenticate</kbd>     | retrieves user info see [response details](#get-auth-detail)
-| <kbd>POST /authenticate</kbd>     | authenticate user into the api see [request details](#post-auth-detail)
-
-<h3 id="get-auth-detail">GET /authenticate</h3>
-
-**RESPONSE**
-```json
-{
-  "name": "Fulano Detal",
-  "age": 20,
-  "email": "fulano@gmail.com"
-}
-```
-
-<h3 id="post-auth-detail">POST /authenticate</h3>
-
-**REQUEST**
-```json
-{
-  "username": "fulanodetal",
-  "password": "password"
-}
-```
-
-**RESPONSE**
-```json
-{
-  "token": "OwoMRHsaQwyAgVoc3OXmL1JhMVUYXGGBbCTK0GBgiYitwQwjf0gVoBmkbuyy0pSi"
-}
-```
+To have all details about endpoints you can access the complete documentation here: (https://documenter.getpostman.com/view/34296685/2sA3kbgyQ9#86442ae0-76a3-42e1-8210-436b5fb0bc26)
 
 <h2 id="contacts">📫 Contacts</h2>
 
-You can contact me through LinkedIn (www.linkedin.com/in/matheus-eufrásio-51678922b) or GitHub (https://github.com/m-eufrasio) wheter you have any questions or another thing. This project is only to study and is not oficially open to pull requests but is not a rule.
+You can contact me through LinkedIn (www.linkedin.com/in/matheus-eufrásio-51678922b) or GitHub (https://github.com/m-eufrasio) wheter you have any questions or another thing. This project is only to study and is not officially open to pull requests but is not a rule.
 
 
