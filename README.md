@@ -1,66 +1,76 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1 align="center" style="font-weight: bold;">API Auth Middleware 💻</h1>
+
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+ <a href="#tech">Technologies</a> • 
+ <a href="#started">Getting Started</a> • 
+  <a href="#routes">API Endpoints</a> •
+  <a href="#contacts">Contacts</a>
 </p>
 
-## About Laravel
+<p align="center">
+    <b>This API is designed to practice and demonstrate authentication and authorization using Laravel Sanctum. It includes comprehensive study and implementation of middlewares, with a focus on creating a global Gate and an associated Policy for access control.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Additionally, the project incorporates seeders, migrations, and factories to facilitate testing and ensure robust development practices.</b>
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<h2 id="tech">💻 Technologies</h2>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white)
+![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white)
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
 
-## Learning Laravel
+OBS: The database used is PostgreSQL but feel free to use another one.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<h2 id="started">🚀 Getting started</h2>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+<h3>Prerequisites</h3>
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- [**PHP** version **8** or superior](https://www.php.net/);
+- [**Laravel 10** or superior](https://laravel.com/);
+- [**GIT 2** or superior](https://github.com);
+- [**Postman** version **11** or superior](https://www.postman.com/);
+- [Any database](https://www.postgresql.org);
 
-## Laravel Sponsors
+<h3>Cloning</h3>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+With the command below you will clone the project to your computer:
 
-### Premium Partners
+```bash
+git clone https://github.com/m-eufrasio/api-auth-middleware.git
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+<h3>Config .env variables</h2>
 
-## Contributing
+Use the `.env.example` as reference to create your configuration file `.env`.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<h3>Install Composer</h3>
 
-## Code of Conduct
+After clone the project you will need to install composer:
+```bash
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<h3>Starting</h3>
 
-## Security Vulnerabilities
+1. Review the Documentation: Begin by reading the documentation to gain a better understanding of how each request operates. You can find the link to the documentation in the API Endpoints section.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2. Run the Project: Execute the project using the following command:
+```bash
+php artisan serve
+```
 
-## License
+3. Sending Requests: Use Postman to send requests, which includes comprehensive documentation for the API and pre-configured requests. To access the remaining requests, you will need to log in to generate a Bearer token, which must be included in the Authorization header in Postman. Note that the token expires after 1 hour; you will need to log in again to obtain a new token once it expires.
+   
+<h2 id="routes">📍 API Endpoints</h2>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+To have all details about endpoints you can access the complete documentation here: (https://documenter.getpostman.com/view/34296685/2sA3kbgyQ9#86442ae0-76a3-42e1-8210-436b5fb0bc26)
+
+<h2 id="contacts">📫 Contacts</h2>
+
+You can contact me through LinkedIn (www.linkedin.com/in/matheus-eufrásio-51678922b) or GitHub (https://github.com/m-eufrasio) wheter you have any questions or another thing. This project is only to study and is not officially open to pull requests but is not a rule.
+
+
