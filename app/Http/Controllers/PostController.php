@@ -18,6 +18,7 @@ class PostController extends Controller
 
     /**
      * Display a listing of the resource.
+     * @return Response 200
      */
     public function index()
     {
@@ -29,6 +30,8 @@ class PostController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * @param Request $request Include user's datas
+     * @return Response 201
      */
     public function store(Request $request)
     {
@@ -47,6 +50,7 @@ class PostController extends Controller
 
     /**
      * Display the specified resource.
+     * @return Response 200
      */
     public function show()
     {
@@ -61,6 +65,9 @@ class PostController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * @param Request $request Include user's datas
+     * @param int $id Include id's post
+     * @return Response 200
      */
     public function update(Request $request, int $id)
     {
@@ -79,8 +86,10 @@ class PostController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * @param string $postId Include id's post
+     * @return Response 204
      */
-    public function destroy(string $userId, string $postId)
+    public function destroy(string $postId)
     {
         $this->repository->delete((int) $postId);
 
